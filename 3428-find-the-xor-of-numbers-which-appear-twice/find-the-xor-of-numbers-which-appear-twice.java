@@ -1,7 +1,7 @@
 class Solution {
     public int duplicateNumbersXOR(int[] arr) {
 
-        int [] feq = new int[51];
+        int [] feq = new int[52];
         // count the feq of an array
         for(int i=0;i<arr.length;i++){
             feq[arr[i]]++;
