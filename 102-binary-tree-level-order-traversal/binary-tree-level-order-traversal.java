@@ -1,26 +1,34 @@
 
 class Solution {
-    public int find(TreeNode root){
+    public int HightOfBinary(TreeNode root){
         if(root==null) return 0;
-
-        return 1+Math.max(find(root.left),find(root.right));
+        int left = HightOfBinary(root.left);
+        int right = HightOfBinary(root.right);
+        return 1+Math.max(left, right);
     }
-    public void LevelOrder(ArrayList<Integer> arr, int idx,int n, TreeNode root){
+    public void levelOrder(TreeNode root, int level,List<List<Integer>> ans ){
         if(root==null) return ;
-        if(idx==n) arr.add(root.val);
-        LevelOrder(arr,idx+1,n,root.left);
-        LevelOrder(arr,idx+1,n,root.right);
+         if(level == 0){
+            ans.get(ans.size() - 1).add(root.val);
+        } else {
+            levelOrder(root.left, level - 1, ans);
+            levelOrder(root.right, level - 1, ans);
+        }
     }
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ans = new ArrayList<>();
-         int level = find(root);
-          for(int i=0;i<level;i++){
-            ArrayList<Integer> arr = new ArrayList<>();
 
-            LevelOrder(arr,0,i,root);
-            ans.add(arr);
-          }
-         return ans;
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        
+        int height =HightOfBinary(root);
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for(int i=0;i<height;i++){
+             ans.add(new ArrayList<>());
+            levelOrder(root, i, ans);
+        }
+        return ans;
+        
+
         
     }
 }
