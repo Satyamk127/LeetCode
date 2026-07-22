@@ -11,6 +11,7 @@ class Solution {
 
        
         public int compareTo(Pair p) {
+            if(this.time==p.time) return this.node - p.node;
             return this.time - p.time;
         }
     }
