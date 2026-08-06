@@ -1,29 +1,29 @@
 class Solution {
-
-    public int pro(int num) {
-        int product = 1;
-
-        if (num == 0) {
-            return 0;
-        }
-
-        while (num > 0) {
-            product *= (num % 10);
-            num /= 10;
-        }
-
-        return product;
-    }
-
-    public int smallestNumber(int n, int t) {
-
-        int i = n;
-
-        while (true) {
-            if (pro(i) % t == 0) {
-                return i;
+    public int pro(int i){
+        int sum =1;
+        while(i>0){
+            int p = i%10;
+            sum=sum*p;
+            i/=10;
             }
-            i++;
+        return sum;
+    }
+    public int smallestNumber(int n, int t) {
+      
+       if(n==1 && t==2) return 2;
+        
+        for(int i=n ;i<=n*t;i++){
+            int r =pro(i);
+            if(r%t==0) return i;
+            
+            
+            
+        
         }
+        return n;
+
+        
+      
+       
     }
 }
