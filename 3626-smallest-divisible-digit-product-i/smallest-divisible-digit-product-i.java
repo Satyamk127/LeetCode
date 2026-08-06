@@ -10,7 +10,7 @@ class Solution {
     }
     public int smallestNumber(int n, int t) {
       
-       if(n==1 && t==2) return 2;
+       
         
         for(int i=n ;i<=n*t;i++){
             int r =pro(i);
